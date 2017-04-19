@@ -59,15 +59,12 @@ public final class QuoteSyncJob {
             }
 
             Map<String, Stock> quotes = YahooFinance.get(stockArray);
-            Iterator<String> iterator = stockPref.iterator();
 
             Timber.d(quotes.toString());
 
             ArrayList<ContentValues> quoteCVs = new ArrayList<>();
 
-            while (iterator.hasNext()) {
-                String symbol = iterator.next();
-
+            for (String symbol : stockPref) {
 
                 Stock stock = quotes.get(symbol);
                 StockQuote quote = stock.getQuote();
