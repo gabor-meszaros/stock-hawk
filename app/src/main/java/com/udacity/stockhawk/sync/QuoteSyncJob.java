@@ -15,7 +15,6 @@ import com.udacity.stockhawk.data.PrefUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -51,18 +50,16 @@ public final class QuoteSyncJob {
         try {
 
             Set<String> stockPref = PrefUtils.getStocks(context);
-            Set<String> stockCopy = new HashSet<>();
-            stockCopy.addAll(stockPref);
             String[] stockArray = stockPref.toArray(new String[stockPref.size()]);
 
-            Timber.d(stockCopy.toString());
+            Timber.d(stockPref.toString());
 
             if (stockArray.length == 0) {
                 return;
             }
 
             Map<String, Stock> quotes = YahooFinance.get(stockArray);
-            Iterator<String> iterator = stockCopy.iterator();
+            Iterator<String> iterator = stockPref.iterator();
 
             Timber.d(quotes.toString());
 
