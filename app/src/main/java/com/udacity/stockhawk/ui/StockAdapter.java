@@ -70,9 +70,7 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
 
         final String history = cursor.getString(Contract.Quote.POSITION_HISTORY);
         if (null != history && !history.isEmpty()) {
-            holder.error.setVisibility(View.GONE);
-            holder.price.setVisibility(View.VISIBLE);
-            holder.change.setVisibility(View.VISIBLE);
+            showPriceFields(holder);
 
             holder.price.setText(dollarFormat.format(cursor.getFloat(Contract.Quote.POSITION_PRICE)));
 
@@ -95,11 +93,21 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
                 holder.change.setText(percentage);
             }
         } else {
-            holder.error.setVisibility(View.VISIBLE);
-            holder.price.setVisibility(View.GONE);
-            holder.change.setVisibility(View.GONE);
+            showErrorDisplay(holder);
         }
 
+    }
+
+    private void showErrorDisplay(final StockViewHolder holder) {
+        holder.error.setVisibility(View.VISIBLE);
+        holder.price.setVisibility(View.GONE);
+        holder.change.setVisibility(View.GONE);
+    }
+
+    private void showPriceFields(final StockViewHolder holder) {
+        holder.error.setVisibility(View.GONE);
+        holder.price.setVisibility(View.VISIBLE);
+        holder.change.setVisibility(View.VISIBLE);
     }
 
     @Override
