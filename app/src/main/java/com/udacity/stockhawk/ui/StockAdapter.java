@@ -92,8 +92,10 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
             } else {
                 holder.change.setText(percentage);
             }
+            holder.enableOnClick();
         } else {
             showErrorDisplay(holder);
+            holder.disableOnClick();
         }
 
     }
@@ -141,7 +143,6 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
         StockViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -150,6 +151,14 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
             cursor.moveToPosition(adapterPosition);
             int symbolColumn = cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL);
             clickHandler.onClick(cursor.getString(symbolColumn));
+        }
+
+        public void enableOnClick() {
+            itemView.setOnClickListener(this);
+        }
+
+        public void disableOnClick() {
+            itemView.setOnClickListener(null);
         }
     }
 }
