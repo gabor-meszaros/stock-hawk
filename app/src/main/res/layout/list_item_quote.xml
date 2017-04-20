@@ -23,6 +23,15 @@
         android:gravity="end">
 
         <TextView
+            android:id="@+id/quote_error_display"
+            android:text="Unknown"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            tools:text="Unknown" />
+
+        <TextView
             android:id="@+id/price"
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
