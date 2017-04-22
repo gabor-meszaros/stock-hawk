@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <!-- The singleLine attribute is needed to make the Done/Enter button work on the soft keyboard,
+         android:digits disables it somehow: http://stackoverflow.com/a/42480866/1291149 -->
     <EditText
         android:id="@+id/dialog_stock"
         android:layout_width="match_parent"
@@ -13,6 +15,11 @@
         android:layout_marginRight="4dp"
         android:layout_marginTop="16dp"
         android:hint="@string/dialog_hint"
-        android:inputType="textCapCharacters" />
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:imeOptions="actionDone"
+        android:maxLength="4"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:inputType="textCapCharacters|textVisiblePassword" />
 
 </LinearLayout>
