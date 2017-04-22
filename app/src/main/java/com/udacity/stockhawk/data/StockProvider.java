@@ -3,6 +3,7 @@ package com.udacity.stockhawk.data;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +11,9 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-
 public class StockProvider extends ContentProvider {
+
+    public static final String ACTION_DATA_UPDATED = "com.udacity.stockhawk.ACTION_DATA_UPDATED";
 
     private static final int QUOTE = 100;
     private static final int QUOTE_FOR_SYMBOL = 101;
@@ -105,6 +107,8 @@ public class StockProvider extends ContentProvider {
         Context context = getContext();
         if (context != null){
             context.getContentResolver().notifyChange(uri, null);
+
+            broadcastStockDataChanged(context);
         }
 
         return returnUri;
@@ -144,6 +148,8 @@ public class StockProvider extends ContentProvider {
             Context context = getContext();
             if (context != null){
                 context.getContentResolver().notifyChange(uri, null);
+
+                broadcastStockDataChanged(context);
             }
         }
 
@@ -180,13 +186,18 @@ public class StockProvider extends ContentProvider {
                 Context context = getContext();
                 if (context != null) {
                     context.getContentResolver().notifyChange(uri, null);
+
+                    broadcastStockDataChanged(context);
                 }
 
                 return returnCount;
             default:
                 return super.bulkInsert(uri, values);
         }
+    }
 
-
+    private void broadcastStockDataChanged(Context context) {
+        Intent dataUpdatedIntent = new Intent(ACTION_DATA_UPDATED);
+        context.sendBroadcast(dataUpdatedIntent);
     }
 }
