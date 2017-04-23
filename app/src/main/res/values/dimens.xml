@@ -1,6 +1,11 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
 
+    <!-- Stock Details Activity -->
+    <dimen name="stock_details_horizontal_spacing">8dp</dimen>
+    <dimen name="stock_details_history_height">200dp</dimen>
+    <dimen name="stock_details_item_price_end_margin">10dp</dimen>
+
     <!-- Stock List Widget -->
     <dimen name="widget_stock_list_default_width">250dp</dimen>
     <dimen name="widget_stock_list_default_height">180dp</dimen>

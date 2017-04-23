@@ -30,6 +30,11 @@
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
 
+    <!-- Activity Stock Details -->
+    <string name="stock_details_symbol_text">STCK</string>
+    <string name="stock_details_price_text">$1234.56</string>
+    <string name="stock_details_change_text">-$1.54 (1.37%)</string>
+
     <!-- Widget Stock List -->
     <string name="widget_stock_list_symbol_text">STCK</string>
     <string name="widget_stock_list_price_text">$1234.56</string>

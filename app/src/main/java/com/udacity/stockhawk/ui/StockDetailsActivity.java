@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
+import com.udacity.stockhawk.util.UiUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +34,12 @@ public class StockDetailsActivity extends AppCompatActivity {
     @BindView(R.id.stock_details_symbol)
     TextView mSymbol;
 
+    @BindView(R.id.stock_details_price)
+    TextView mPrice;
+
+    @BindView(R.id.stock_details_change)
+    TextView mChange;
+
     @BindView(R.id.stock_details_history)
     LineChart mHistory;
 
@@ -49,6 +56,22 @@ public class StockDetailsActivity extends AppCompatActivity {
             if (null != cursor && cursor.moveToFirst()) {
                 final int symbolColumnIndex = cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL);
                 mSymbol.setText(cursor.getString(symbolColumnIndex));
+
+                final float price =
+                        cursor.getFloat(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE));
+                mPrice.setText(UiUtils.getDollar(price, false));
+
+                final float rawAbsoluteChange =
+                        cursor.getFloat(cursor.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE));
+                final float percentageChange =
+                        cursor.getFloat(cursor.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE));
+                mChange.setText(UiUtils.getChange(rawAbsoluteChange, percentageChange / 100));
+
+                if (rawAbsoluteChange > 0) {
+                    mChange.setBackgroundResource(R.drawable.percent_change_pill_green);
+                } else {
+                    mChange.setBackgroundResource(R.drawable.percent_change_pill_red);
+                }
 
                 final int historyColumnIndex = cursor.getColumnIndex(Contract.Quote.COLUMN_HISTORY);
                 final String history = cursor.getString(historyColumnIndex);

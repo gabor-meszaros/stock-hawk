@@ -71,7 +71,8 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
 
                 final float price =
                         data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_PRICE));
-                views.setTextViewText(R.id.widget_stock_list_item_price, String.valueOf(price));
+                views.setTextViewText(R.id.widget_stock_list_item_price,
+                        UiUtils.getDollar(price, false));
 
                 final float rawAbsoluteChange =
                         data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE));

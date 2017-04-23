@@ -21,6 +21,26 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Activity Stock Details -->
+
+    <style name="StockDetailsSymbolTextStyle" parent="StockSymbolTextStyle">
+    </style>
+
+    <style name="StockDetailsPriceTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StockDetailsChangeTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">@dimen/widget_stock_list_item_change_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/widget_stock_list_item_change_horizontal_padding</item>
+    </style>
+
+    <!-- Widget Stock List -->
+
     <style name="WidgetStockLisListStyle">
         <item name="android:divider">@null</item>
         <item name="android:dividerHeight">0dp</item>
@@ -36,7 +56,7 @@
     </style>
 
     <style name="WidgetStockListPercentChangeTextStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">#FFF</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -47,4 +67,5 @@
         <item name="android:text">@string/widget_stock_list_error_no_stocks</item>
         <item name="android:textAppearance">?android:textAppearanceLarge</item>
     </style>
+
 </resources>
