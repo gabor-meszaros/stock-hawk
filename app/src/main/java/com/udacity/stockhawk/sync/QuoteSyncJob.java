@@ -62,7 +62,7 @@ public final class QuoteSyncJob {
 
             ArrayList<ContentValues> quoteCVs = new ArrayList<>();
 
-            for (String symbol : stockPref) {
+            for (String symbol : stockArray) {
 
                 Stock stock = quotes.get(symbol);
 
