@@ -1,5 +1,8 @@
 package com.udacity.stockhawk.util;
 
+import android.content.Context;
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import java.text.DecimalFormat;
@@ -46,5 +49,13 @@ public class UiUtils {
     public static String getChange(final double rawChange, final double percentageChange) {
         final double absoluteChange = Math.abs(percentageChange);
         return getDollar(rawChange, true) + " (" + getPercentage(absoluteChange, false) + ")";
+    }
+
+    public static int getColor(@NonNull final Context context, final int resourceColorId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return context.getColor(resourceColorId);
+        } else {
+            return context.getResources().getColor(resourceColorId);
+        }
     }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -55,7 +56,8 @@ public class StockDetailsActivity extends AppCompatActivity {
             final Cursor cursor = getContentResolver().query(stockUri, null, null, null, null);
             if (null != cursor && cursor.moveToFirst()) {
                 final int symbolColumnIndex = cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL);
-                mSymbol.setText(cursor.getString(symbolColumnIndex));
+                final String symbol = cursor.getString(symbolColumnIndex);
+                mSymbol.setText(symbol);
 
                 final float price =
                         cursor.getFloat(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE));
@@ -89,7 +91,7 @@ public class StockDetailsActivity extends AppCompatActivity {
                     xAxisPosition++;
                 }
 
-                final LineDataSet dataSet = new LineDataSet(entries, "History");
+                final LineDataSet dataSet = new LineDataSet(entries, null);
                 dataSet.setColor(R.color.colorAccent);
                 final LineData lineData = new LineData(dataSet);
                 mHistory.setData(lineData);
@@ -104,6 +106,22 @@ public class StockDetailsActivity extends AppCompatActivity {
                     }
                 });
 
+                mHistory.setAutoScaleMinMaxEnabled(true);
+                mHistory.getLegend().setEnabled(false);
+                mHistory.getDescription().setText(symbol + "@YahooFinance");
+
+                // Borders
+                mHistory.setDrawBorders(true);
+                mHistory.setBorderColor(UiUtils.getColor(this, R.color.white));
+                mHistory.setBorderWidth(2);
+
+                mHistory.setDrawGridBackground(true);
+                mHistory.setDrawingCacheBackgroundColor(UiUtils.getColor(this, R.color.white));
+                xAxis.setTextColor(UiUtils.getColor(this, R.color.white));
+                final YAxis axisLeft = mHistory.getAxisLeft();
+                axisLeft.setTextColor(UiUtils.getColor(this, R.color.white));
+                final YAxis axisRight = mHistory.getAxisRight();
+                axisRight.setTextColor(UiUtils.getColor(this, R.color.white));
 
                 cursor.close();
             }
