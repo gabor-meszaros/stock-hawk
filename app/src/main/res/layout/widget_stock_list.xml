@@ -30,18 +30,14 @@
             android:id="@+id/widget_stock_list_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"
-            android:dividerHeight="0dp"
+            style="@style/WidgetStockLisListStyle"
             tools:listitem="@layout/list_item_widget_stock_list" />
 
         <TextView
             android:id="@+id/widget_stock_list_empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="sans-serif-condensed"
-            android:gravity="center"
-            android:text="There are no stocks selected."
-            android:textAppearance="?android:textAppearanceLarge" />
+            style="@style/WidgetStockListMessageStyle" />
 
     </FrameLayout>
 

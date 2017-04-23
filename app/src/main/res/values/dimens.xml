@@ -7,4 +7,6 @@
     <dimen name="widget_stock_list_min_resize_width">220dp</dimen>
     <dimen name="widget_stock_list_min_resize_height">@dimen/widget_stock_list_default_height</dimen>
 
+    <dimen name="widget_stock_list_item_price_end_margin">10dp</dimen>
+    <dimen name="widget_stock_list_item_change_horizontal_padding">3dp</dimen>
 </resources>

@@ -6,18 +6,45 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="PercentChangeTextStyle">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#FFF</item>
-        <item name="android:textStyle">bold</item>
+    <style name="StockSymbolTextStyle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="BidPriceTextStyle">
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="StockSymbolTextStyle">
-        <item name="android:textSize">25sp</item>
-        <item name="android:textAllCaps">true</item>
+    <style name="PercentChangeTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WidgetStockLisListStyle">
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+    <style name="WidgetStockListStockSymbolTextStyle" parent="StockSymbolTextStyle">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="WidgetStockLisBidPriceTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="WidgetStockListPercentChangeTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WidgetStockListMessageStyle">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/widget_stock_list_error_no_stocks</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
     </style>
 </resources>

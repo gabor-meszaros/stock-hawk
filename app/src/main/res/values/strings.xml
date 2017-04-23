@@ -17,9 +17,7 @@
     <string name="default_stocks_microsoft">MSFT</string>
     <string name="default_stocks_facebook">FB</string>
 
-
     <string name="action_change_units">@string/pref_display_mode_key</string>
-
 
     <string name="dialog_title">Add Stock</string>
     <string name="dialog_hint">Symbol (e.g. GOOG)</string>
@@ -32,4 +30,10 @@
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
 
+    <!-- Widget Stock List -->
+    <string name="widget_stock_list_symbol_text">STCK</string>
+    <string name="widget_stock_list_price_text">$1234.56</string>
+    <string name="widget_stock_list_change_text">-$1.54 (1.37%)</string>
+
+    <string name="widget_stock_list_error_no_stocks">No stocks added!\nLaunch the app and add one.</string>
 </resources>
