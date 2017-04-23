@@ -7,7 +7,7 @@
     android:minResizeHeight="@dimen/widget_stock_list_min_resize_height"
     android:minResizeWidth="@dimen/widget_stock_list_min_resize_width"
     android:minWidth="@dimen/widget_stock_list_default_width"
-    android:previewImage="@drawable/ic_dollar"
+    android:previewImage="@mipmap/ic_launcher"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen|keyguard"
