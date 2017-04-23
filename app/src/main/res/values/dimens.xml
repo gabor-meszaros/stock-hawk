@@ -3,7 +3,7 @@
 
     <!-- Stock Details Activity -->
     <dimen name="stock_details_horizontal_spacing">8dp</dimen>
-    <dimen name="stock_details_history_height">200dp</dimen>
+    <dimen name="stock_details_history_height">350dp</dimen>
     <dimen name="stock_details_item_price_end_margin">10dp</dimen>
 
     <!-- Stock List Widget -->

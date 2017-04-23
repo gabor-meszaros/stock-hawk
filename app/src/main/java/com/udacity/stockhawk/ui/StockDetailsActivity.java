@@ -95,6 +95,7 @@ public class StockDetailsActivity extends AppCompatActivity {
                 mHistory.setData(lineData);
                 mHistory.invalidate();
                 final XAxis xAxis = mHistory.getXAxis();
+                xAxis.setLabelRotationAngle(-45);
                 xAxis.setValueFormatter(new IAxisValueFormatter() {
                     @Override
                     public String getFormattedValue(float value, AxisBase axis) {
@@ -102,6 +103,7 @@ public class StockDetailsActivity extends AppCompatActivity {
                         return new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(date);
                     }
                 });
+
 
                 cursor.close();
             }
