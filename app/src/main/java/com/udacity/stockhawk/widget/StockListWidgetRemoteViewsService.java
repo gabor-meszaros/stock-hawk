@@ -10,6 +10,7 @@ import android.widget.RemoteViewsService;
 
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
+import com.udacity.stockhawk.util.UiUtils;
 
 public class StockListWidgetRemoteViewsService extends RemoteViewsService {
 
@@ -74,7 +75,10 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
 
                 final float rawAbsoluteChange =
                         data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE));
-                views.setTextViewText(R.id.widget_stock_list_item_change, "(" + String.valueOf(rawAbsoluteChange) + ")");
+                final float percentageChange =
+                        data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE));
+                views.setTextViewText(R.id.widget_stock_list_item_change,
+                        UiUtils.getChange(rawAbsoluteChange, percentageChange / 100));
 
                 if (rawAbsoluteChange > 0) {
                     views.setInt(R.id.widget_stock_list_item_change, "setBackgroundResource",
@@ -88,6 +92,7 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
                 final Uri stockUri = Contract.Quote.makeUriForStock(symbol);
                 fillInIntent.setData(stockUri);
                 views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
+
                 return views;
             }
 
