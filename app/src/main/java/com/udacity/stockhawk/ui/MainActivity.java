@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.ui;
 
+import android.content.AsyncQueryHandler;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -85,10 +86,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
 
             @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                String symbol = adapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
-                PrefUtils.removeStock(MainActivity.this, symbol);
-                getContentResolver().delete(Contract.Quote.makeUriForStock(symbol), null, null);
+            public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
+                final String symbol = adapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
+                final AsyncQueryHandler asyncDeleteHandler =
+                        new AsyncQueryHandler(getContentResolver()) {
+                            @Override
+                            protected void onDeleteComplete(int token, Object cookie, int result) {
+                                PrefUtils.removeStock(MainActivity.this, symbol);
+                            }
+                        };
+                final int anyId = 42; // We will not use it in the result handler function
+                asyncDeleteHandler.startDelete(anyId, null, Contract.Quote.makeUriForStock(symbol),
+                        null, null);
             }
         }).attachToRecyclerView(stockRecyclerView);
 

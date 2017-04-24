@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.ui;
 
+import android.content.AsyncQueryHandler;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -61,17 +62,20 @@ public class StockDetailsActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         if (null != intent && null != intent.getData()) {
             final Uri stockUri = intent.getData();
-            final Cursor cursor = getContentResolver().query(stockUri, null, null, null, null);
-            try {
-                if (null != cursor && cursor.moveToFirst()) {
-                    setSymbol(cursor);
-                    setPrice(cursor);
-                    setPriceChange(cursor);
-                    setHistory(cursor);
-                }
-            } finally {
-               if (null != cursor && !cursor.isClosed()) cursor.close();
-            }
+            final AsyncQueryHandler asyncQueryHandler =
+                    new AsyncQueryHandler(getContentResolver()) {
+                        @Override
+                        protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
+                            if (null != cursor && cursor.moveToFirst()) {
+                                setSymbol(cursor);
+                                setPrice(cursor);
+                                setPriceChange(cursor);
+                                setHistory(cursor);
+                            }
+                        }
+                    };
+            final int anyId = 42; // We will not use it in the result handler function
+            asyncQueryHandler.startQuery(anyId, null, stockUri, null, null, null, null);
         }
     }
 
