@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <bool name="widget_stock_list_enabled">true</bool>
     <bool name="use_stock_detail_activity">true</bool>
+
 </resources>

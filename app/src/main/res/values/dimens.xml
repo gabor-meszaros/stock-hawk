@@ -1,4 +1,5 @@
 <resources>
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
 
     <!-- Stock Details Activity -->
@@ -14,4 +15,5 @@
 
     <dimen name="widget_stock_list_item_price_end_margin">10dp</dimen>
     <dimen name="widget_stock_list_item_change_horizontal_padding">3dp</dimen>
+
 </resources>
