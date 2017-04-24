@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -39,18 +41,26 @@ public class StockDetailsActivity extends AppCompatActivity {
     private static final SimpleDateFormat X_AXIS_DATE_LABEL_FORMAT =
             new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
+    @BindView(R.id.activity_stock_details_current_stock_info)
+    View mCurrentStockInfo;
 
-    @BindView(R.id.stock_details_symbol)
+    @BindView(R.id.activity_stock_details_symbol)
     TextView mSymbol;
 
-    @BindView(R.id.stock_details_price)
+    @BindView(R.id.activity_stock_details_price)
     TextView mPrice;
 
-    @BindView(R.id.stock_details_change)
+    @BindView(R.id.activity_stock_details_change)
     TextView mChange;
 
-    @BindView(R.id.stock_details_history)
+    @BindView(R.id.activity_stock_details_history)
     LineChart mHistory;
+
+    @BindView(R.id.activity_stock_details_progress_bar)
+    ProgressBar mProgressBar;
+
+    @BindView(R.id.activity_stock_details_error_display)
+    TextView mErrorDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,8 @@ public class StockDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stock_details);
 
         ButterKnife.bind(this);
+
+        showProgressBar();
 
         final Intent intent = getIntent();
         if (null != intent && null != intent.getData()) {
@@ -71,6 +83,10 @@ public class StockDetailsActivity extends AppCompatActivity {
                                 setPrice(cursor);
                                 setPriceChange(cursor);
                                 setHistory(cursor);
+
+                                showStockData();
+                            } else {
+                                showErrorMessage();
                             }
                         }
                     };
@@ -228,7 +244,27 @@ public class StockDetailsActivity extends AppCompatActivity {
         axisLeft.setTextColor(UiUtils.getColor(this, R.color.white));
         final YAxis axisRight = mHistory.getAxisRight();
         axisRight.setTextColor(UiUtils.getColor(this, R.color.white));
+    }
 
+    private void showStockData() {
+        mCurrentStockInfo.setVisibility(View.VISIBLE);
+        mHistory.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.GONE);
+        mErrorDisplay.setVisibility(View.GONE);
+    }
+
+    private void showProgressBar() {
+        mCurrentStockInfo.setVisibility(View.GONE);
+        mHistory.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
+        mErrorDisplay.setVisibility(View.GONE);
+    }
+
+    private void showErrorMessage() {
+        mCurrentStockInfo.setVisibility(View.GONE);
+        mHistory.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.GONE);
+        mErrorDisplay.setVisibility(View.VISIBLE);
     }
 
     private void redrawnHistory() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     tools:context="com.udacity.stockhawk.ui.StockDetailsActivity">
 
     <LinearLayout
+        android:id="@+id/activity_stock_details_current_stock_info"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:gravity="center_vertical"
@@ -15,7 +16,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/stock_details_symbol"
+            android:id="@+id/activity_stock_details_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -32,7 +33,7 @@
             android:gravity="end|center_vertical">
 
             <TextView
-                android:id="@+id/stock_details_price"
+                android:id="@+id/activity_stock_details_price"
                 style="@style/BidPriceTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,7 +41,7 @@
                 tools:text="@string/stock_details_price_text" />
 
             <TextView
-                android:id="@+id/stock_details_change"
+                android:id="@+id/activity_stock_details_change"
                 style="@style/StockDetailsChangeTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +53,7 @@
     </LinearLayout>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/stock_details_history"
+        android:id="@+id/activity_stock_details_history"
         android:layout_width="match_parent"
         android:layout_height="@dimen/stock_details_history_height"
         android:layout_marginTop="@dimen/stock_details_horizontal_spacing"
@@ -60,4 +61,21 @@
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         />
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/activity_stock_details_progress_bar"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/activity_stock_details_error_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:text="Something went wrong. Please try again."
+        tools:text="Something went wrong. Please try again." />
+
+</merge>
