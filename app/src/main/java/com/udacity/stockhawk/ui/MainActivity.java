@@ -26,6 +26,8 @@ import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
 
+import java.util.Set;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
@@ -93,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                             @Override
                             protected void onDeleteComplete(int token, Object cookie, int result) {
                                 PrefUtils.removeStock(MainActivity.this, symbol);
+                                final Set<String> stocks = PrefUtils.getStocks(MainActivity.this);
+                                if (stocks.isEmpty()) {
+                                    onRefresh();
+                                }
                             }
                         };
                 final int anyId = 42; // We will not use it in the result handler function
