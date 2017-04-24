@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 public class AddStockDialog extends DialogFragment {
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.dialog_stock)
+    @BindView(R.id.dialog_add_stock_symbol)
     EditText stock;
 
     @Override

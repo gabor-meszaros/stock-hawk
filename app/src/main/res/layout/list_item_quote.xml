@@ -10,7 +10,7 @@
     android:paddingRight="16dp">
 
     <TextView
-        android:id="@+id/symbol"
+        android:id="@+id/activity_main_list_item_symbol"
         style="@style/StockSymbolTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         android:gravity="end">
 
         <TextView
-            android:id="@+id/quote_error_display"
+            android:id="@+id/activity_main_list_item_error_display"
             android:text="Unknown"
             android:textSize="20sp"
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             tools:text="Unknown" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/activity_main_list_item_price"
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             tools:text="1000.00" />
 
         <TextView
-            android:id="@+id/change"
+            android:id="@+id/activity_main_list_item_change"
             style="@style/PercentChangeTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

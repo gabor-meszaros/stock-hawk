@@ -7,7 +7,7 @@
     <!-- The singleLine attribute is needed to make the Done/Enter button work on the soft keyboard,
          android:digits disables it somehow: http://stackoverflow.com/a/42480866/1291149 -->
     <EditText
-        android:id="@+id/dialog_stock"
+        android:id="@+id/dialog_add_stock_symbol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"

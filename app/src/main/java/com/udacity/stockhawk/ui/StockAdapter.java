@@ -110,16 +110,16 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
 
     class StockViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.symbol)
+        @BindView(R.id.activity_main_list_item_symbol)
         TextView symbol;
 
-        @BindView(R.id.quote_error_display)
+        @BindView(R.id.activity_main_list_item_error_display)
         TextView error;
 
-        @BindView(R.id.price)
+        @BindView(R.id.activity_main_list_item_price)
         TextView price;
 
-        @BindView(R.id.change)
+        @BindView(R.id.activity_main_list_item_change)
         TextView change;
 
         StockViewHolder(View itemView) {

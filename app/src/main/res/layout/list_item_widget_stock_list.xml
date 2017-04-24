@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/widget_list_item"
+    android:id="@+id/widget_stock_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/touch_selector_white">

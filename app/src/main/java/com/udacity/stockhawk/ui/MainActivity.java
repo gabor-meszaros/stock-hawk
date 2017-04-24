@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int STOCK_LOADER = 0;
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.recycler_view)
+    @BindView(R.id.activity_main_stocks)
     RecyclerView stockRecyclerView;
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.swipe_refresh)
+    @BindView(R.id.activity_main_swipe_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.error)
+    @BindView(R.id.activity_main_error)
     TextView error;
 
     private StockAdapter adapter;
