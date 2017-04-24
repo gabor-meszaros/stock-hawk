@@ -3,7 +3,6 @@ package com.udacity.stockhawk.util;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
