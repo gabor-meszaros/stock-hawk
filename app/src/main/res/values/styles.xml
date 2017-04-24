@@ -47,11 +47,12 @@
     </style>
 
     <style name="WidgetStockListStockSymbolTextStyle" parent="StockSymbolTextStyle">
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="WidgetStockLisBidPriceTextStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
