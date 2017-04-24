@@ -18,9 +18,9 @@ public class StockProvider extends ContentProvider {
     private static final int QUOTE = 100;
     private static final int QUOTE_FOR_SYMBOL = 101;
 
-    private static final UriMatcher uriMatcher = buildUriMatcher();
+    private static final UriMatcher URI_MATCHER = buildUriMatcher();
 
-    private DbHelper dbHelper;
+    private DbHelper mDbHelper;
 
     private static UriMatcher buildUriMatcher() {
         UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -32,7 +32,7 @@ public class StockProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        dbHelper = new DbHelper(getContext());
+        mDbHelper = new DbHelper(getContext());
         return true;
     }
 
@@ -40,9 +40,9 @@ public class StockProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         Cursor returnCursor;
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case QUOTE:
                 returnCursor = db.query(
                         Contract.Quote.TABLE_NAME,
@@ -88,10 +88,10 @@ public class StockProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
         Uri returnUri;
 
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case QUOTE:
                 db.insert(
                         Contract.Quote.TABLE_NAME,
@@ -116,13 +116,13 @@ public class StockProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
-        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        final SQLiteDatabase db = mDbHelper.getWritableDatabase();
         int rowsDeleted;
 
         if (null == selection) {
             selection = "1";
         }
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case QUOTE:
                 rowsDeleted = db.delete(
                         Contract.Quote.TABLE_NAME,
@@ -164,9 +164,9 @@ public class StockProvider extends ContentProvider {
     @Override
     public int bulkInsert(@NonNull Uri uri, @NonNull ContentValues[] values) {
 
-        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+        final SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        switch (uriMatcher.match(uri)) {
+        switch (URI_MATCHER.match(uri)) {
             case QUOTE:
                 db.beginTransaction();
                 int returnCount = 0;

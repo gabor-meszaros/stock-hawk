@@ -37,7 +37,7 @@
         app:pressedTranslationZ="12dp" />
 
     <TextView
-        android:id="@+id/activity_main_error"
+        android:id="@+id/activity_main_error_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

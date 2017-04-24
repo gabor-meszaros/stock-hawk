@@ -38,17 +38,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @SuppressWarnings("WeakerAccess")
     @BindView(R.id.activity_main_stocks)
-    RecyclerView stockRecyclerView;
+    RecyclerView mStockRecyclerView;
 
     @SuppressWarnings("WeakerAccess")
     @BindView(R.id.activity_main_swipe_refresh)
-    SwipeRefreshLayout swipeRefreshLayout;
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.activity_main_error)
-    TextView error;
+    @BindView(R.id.activity_main_error_display)
+    TextView mErrorDisplayTextView;
 
-    private StockAdapter adapter;
+    private StockAdapter mAdapter;
 
     @Override
     public void onClick(String symbol) {
@@ -62,16 +62,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
 
-        adapter = new StockAdapter(this, this);
-        stockRecyclerView.setAdapter(adapter);
-        stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new StockAdapter(this, this);
+        mStockRecyclerView.setAdapter(mAdapter);
+        mStockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        swipeRefreshLayout.setOnRefreshListener(this);
-        swipeRefreshLayout.setRefreshing(true);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setRefreshing(true);
         onRefresh();
 
         QuoteSyncJob.initialize(this);
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
             @Override
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
-                final String symbol = adapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
+                final String symbol = mAdapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
                 final AsyncQueryHandler asyncDeleteHandler =
                         new AsyncQueryHandler(getContentResolver()) {
                             @Override
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 asyncDeleteHandler.startDelete(anyId, null, Contract.Quote.makeUriForStock(symbol),
                         null, null);
             }
-        }).attachToRecyclerView(stockRecyclerView);
+        }).attachToRecyclerView(mStockRecyclerView);
 
 
     }
@@ -116,19 +116,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         QuoteSyncJob.syncImmediately(this);
 
-        if (!networkUp() && adapter.getItemCount() == 0) {
-            swipeRefreshLayout.setRefreshing(false);
-            error.setText(getString(R.string.error_no_network));
-            error.setVisibility(View.VISIBLE);
+        if (!networkUp() && mAdapter.getItemCount() == 0) {
+            mSwipeRefreshLayout.setRefreshing(false);
+            mErrorDisplayTextView.setText(getString(R.string.error_no_network));
+            mErrorDisplayTextView.setVisibility(View.VISIBLE);
         } else if (!networkUp()) {
-            swipeRefreshLayout.setRefreshing(false);
+            mSwipeRefreshLayout.setRefreshing(false);
             Toast.makeText(this, R.string.toast_no_connectivity, Toast.LENGTH_LONG).show();
         } else if (PrefUtils.getStocks(this).size() == 0) {
-            swipeRefreshLayout.setRefreshing(false);
-            error.setText(getString(R.string.error_no_stocks));
-            error.setVisibility(View.VISIBLE);
+            mSwipeRefreshLayout.setRefreshing(false);
+            mErrorDisplayTextView.setText(getString(R.string.error_no_stocks));
+            mErrorDisplayTextView.setVisibility(View.VISIBLE);
         } else {
-            error.setVisibility(View.GONE);
+            mErrorDisplayTextView.setVisibility(View.GONE);
         }
     }
 
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (symbol != null && !symbol.isEmpty()) {
 
             if (networkUp()) {
-                swipeRefreshLayout.setRefreshing(true);
+                mSwipeRefreshLayout.setRefreshing(true);
             } else {
                 String message = getString(R.string.toast_stock_added_no_connectivity, symbol);
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
@@ -161,19 +161,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        swipeRefreshLayout.setRefreshing(false);
+        mSwipeRefreshLayout.setRefreshing(false);
 
         if (data.getCount() != 0) {
-            error.setVisibility(View.GONE);
+            mErrorDisplayTextView.setVisibility(View.GONE);
         }
-        adapter.setCursor(data);
+        mAdapter.setCursor(data);
     }
 
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        swipeRefreshLayout.setRefreshing(false);
-        adapter.setCursor(null);
+        mSwipeRefreshLayout.setRefreshing(false);
+        mAdapter.setCursor(null);
     }
 
 
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (id == R.id.action_change_units) {
             PrefUtils.toggleDisplayMode(this);
             setDisplayModeMenuItemIcon(item);
-            adapter.notifyDataSetChanged();
+            mAdapter.notifyDataSetChanged();
             return true;
         }
         return super.onOptionsItemSelected(item);

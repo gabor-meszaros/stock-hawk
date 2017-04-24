@@ -8,11 +8,11 @@ import com.udacity.stockhawk.data.Contract.Quote;
 
 class DbHelper extends SQLiteOpenHelper {
 
-    private static final String NAME = "StockHawk.db";
+    private static final String DATABASE_NAME = "StockHawk.db";
     private static final int VERSION = 1;
 
     DbHelper(Context context) {
-        super(context, NAME, null, VERSION);
+        super(context, DATABASE_NAME, null, VERSION);
     }
 
     @Override

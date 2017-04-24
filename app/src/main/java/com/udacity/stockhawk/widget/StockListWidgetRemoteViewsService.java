@@ -17,7 +17,7 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
         return new RemoteViewsFactory() {
-            private Cursor data = null;
+            private Cursor mData = null;
 
             @Override
             public void onCreate() {
@@ -26,16 +26,16 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
 
             @Override
             public void onDataSetChanged() {
-                if (data != null) {
-                    data.close();
+                if (mData != null) {
+                    mData.close();
                 }
                 // This method is called by the app hosting the widget (e.g., the launcher)
                 // However, our ContentProvider is not exported so it doesn't have access to the
-                // data. Therefore we need to clear (and finally restore) the calling identity so
+                // mData. Therefore we need to clear (and finally restore) the calling identity so
                 // that calls use our process and permission
                 final long identityToken = Binder.clearCallingIdentity();
                 final Uri stocksUri = Contract.Quote.URI;
-                data = getContentResolver().query(stocksUri,
+                mData = getContentResolver().query(stocksUri,
                         null,
                         Contract.Quote.COLUMN_HISTORY + " IS NOT NULL",
                         null,
@@ -45,39 +45,39 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
 
             @Override
             public void onDestroy() {
-                if (data != null) {
-                    data.close();
-                    data = null;
+                if (mData != null) {
+                    mData.close();
+                    mData = null;
                 }
             }
 
             @Override
             public int getCount() {
-                return data == null ? 0 : data.getCount();
+                return mData == null ? 0 : mData.getCount();
             }
 
             @Override
             public RemoteViews getViewAt(int position) {
                 if (position == AdapterView.INVALID_POSITION ||
-                        data == null || !data.moveToPosition(position)) {
+                        mData == null || !mData.moveToPosition(position)) {
                     return null;
                 }
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.list_item_widget_stock_list);
 
                 final String symbol =
-                        data.getString(data.getColumnIndex(Contract.Quote.COLUMN_SYMBOL));
+                        mData.getString(mData.getColumnIndex(Contract.Quote.COLUMN_SYMBOL));
                 views.setTextViewText(R.id.widget_stock_list_item_symbol, symbol);
 
                 final float price =
-                        data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_PRICE));
+                        mData.getFloat(mData.getColumnIndex(Contract.Quote.COLUMN_PRICE));
                 views.setTextViewText(R.id.widget_stock_list_item_price,
                         UiUtils.getDollar(price, false));
 
                 final float rawAbsoluteChange =
-                        data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE));
+                        mData.getFloat(mData.getColumnIndex(Contract.Quote.COLUMN_ABSOLUTE_CHANGE));
                 final float percentageChange =
-                        data.getFloat(data.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE));
+                        mData.getFloat(mData.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE));
                 views.setTextViewText(R.id.widget_stock_list_item_change,
                         UiUtils.getChange(rawAbsoluteChange, percentageChange / 100));
 
@@ -109,8 +109,8 @@ public class StockListWidgetRemoteViewsService extends RemoteViewsService {
 
             @Override
             public long getItemId(int position) {
-                if (data.moveToPosition(position))
-                    return data.getLong(data.getColumnIndex(Contract.Quote._ID));
+                if (mData.moveToPosition(position))
+                    return mData.getLong(mData.getColumnIndex(Contract.Quote._ID));
                 return position;
             }
 
