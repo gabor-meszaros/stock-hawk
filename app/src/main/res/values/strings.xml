@@ -41,6 +41,6 @@
     <string name="widget_stock_list_price_text">$1234.56</string>
     <string name="widget_stock_list_change_text">-$1.54 (1.37%)</string>
 
-    <string name="widget_stock_list_error_no_stocks">No stocks added!\nLaunch the app and add one.</string>
+    <string name="widget_stock_list_error_no_stocks">No stocks to show!\nClick here to fix it.</string>
 
 </resources>

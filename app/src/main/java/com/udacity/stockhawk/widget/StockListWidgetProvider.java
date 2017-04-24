@@ -30,6 +30,7 @@ public class StockListWidgetProvider extends AppWidgetProvider {
             final Intent intent = new Intent(context, MainActivity.class);
             final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
             views.setOnClickPendingIntent(R.id.widget_stock_list, pendingIntent);
+            views.setOnClickPendingIntent(R.id.widget_stock_list_empty, pendingIntent);
 
             // Set up the collection
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
