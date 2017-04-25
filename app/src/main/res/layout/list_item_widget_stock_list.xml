@@ -47,8 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/WidgetStockListPercentChangeTextStyle"
-                android:paddingLeft="@dimen/widget_stock_list_item_change_horizontal_padding"
-                android:paddingRight="@dimen/widget_stock_list_item_change_horizontal_padding"
+                android:paddingLeft="@dimen/price_change_background_horizontal_padding"
+                android:paddingRight="@dimen/price_change_background_horizontal_padding"
                 tools:text="@string/widget_stock_list_change_text" />
 
         </LinearLayout>

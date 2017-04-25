@@ -1,11 +1,31 @@
 <resources>
 
+    <!-- General -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
 
-    <!-- Stock Details Activity -->
+    <dimen name="text_size_extra_large">25sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_normal">20sp</dimen>
+    <dimen name="text_size_small">18sp</dimen>
+    <dimen name="text_size_extra_small">16sp</dimen>
+
+    <dimen name="price_change_background_corner_radius">4dp</dimen>
+    <dimen name="price_change_background_horizontal_padding">3dp</dimen>
+
+    <!-- Activity Main -->
+    <dimen name="activity_main_fab_dimens">24dp</dimen>
+
+    <dimen name="activity_main_item_price_end_margin">10dp</dimen>
+
+    <dimen name="activity_main_dialog_add_stock_margin">4dp</dimen>
+    <dimen name="activity_main_dialog_add_stock_top_margin">16dp</dimen>
+
+    <!-- Activity Stock Details -->
     <dimen name="stock_details_horizontal_spacing">8dp</dimen>
     <dimen name="stock_details_history_height">350dp</dimen>
     <dimen name="stock_details_item_price_end_margin">10dp</dimen>
+
+    <dimen name="stock_details_progress_bar_dimens">42dp</dimen>
 
     <!-- Stock List Widget -->
     <dimen name="widget_stock_list_default_width">250dp</dimen>
@@ -14,6 +34,5 @@
     <dimen name="widget_stock_list_min_resize_height">@dimen/widget_stock_list_default_height</dimen>
 
     <dimen name="widget_stock_list_item_price_end_margin">10dp</dimen>
-    <dimen name="widget_stock_list_item_change_horizontal_padding">3dp</dimen>
 
 </resources>

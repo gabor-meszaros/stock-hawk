@@ -114,7 +114,7 @@ public class StockDetailsActivity extends AppCompatActivity {
                 cursor.getColumnIndex(Contract.Quote.COLUMN_PERCENTAGE_CHANGE);
         final float percentageChange = cursor.getFloat(percentagePriceChangeColumnIndex);
 
-        mChange.setText(UiUtils.getChange(rawAbsoluteChange, percentageChange / 100));
+        mChange.setText(UiUtils.getChange(this, rawAbsoluteChange, percentageChange / 100));
 
         setPriceChangeBackgroundColor(rawAbsoluteChange);
     }

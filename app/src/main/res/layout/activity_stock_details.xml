@@ -63,8 +63,8 @@
 
     <ProgressBar
         android:id="@+id/activity_stock_details_progress_bar"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="@dimen/stock_details_progress_bar_dimens"
+        android:layout_height="@dimen/stock_details_progress_bar_dimens"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
