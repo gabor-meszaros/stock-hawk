@@ -244,6 +244,10 @@ public class StockDetailsActivity extends AppCompatActivity {
         axisLeft.setTextColor(UiUtils.getColor(this, R.color.white));
         final YAxis axisRight = mHistory.getAxisRight();
         axisRight.setTextColor(UiUtils.getColor(this, R.color.white));
+
+        // Inform the user if there is no data in the history
+        mHistory.setNoDataText("No data to display.");
+        mHistory.setNoDataTextColor(UiUtils.getColor(this, R.color.white));
     }
 
     private void showStockData() {
