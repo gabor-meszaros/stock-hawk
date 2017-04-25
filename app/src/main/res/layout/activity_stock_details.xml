@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.udacity.stockhawk.ui.StockDetailsActivity">
 
     <LinearLayout
@@ -59,6 +58,7 @@
         android:layout_marginTop="@dimen/stock_details_horizontal_spacing"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/activity_stock_details_current_stock_info"
         />
 
     <ProgressBar
@@ -66,6 +66,8 @@
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:gravity="center_horizontal" />
 
     <TextView
@@ -74,8 +76,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:text="Something went wrong. Please try again."
         tools:text="Something went wrong. Please try again." />
 
-</merge>
+</RelativeLayout>
