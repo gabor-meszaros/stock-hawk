@@ -35,8 +35,8 @@
         <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingLeft">@dimen/price_change_background_horizontal_padding</item>
-        <item name="android:paddingRight">@dimen/price_change_background_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/price_change_background_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/price_change_background_horizontal_padding</item>
     </style>
 
     <!-- Widget Stock List -->

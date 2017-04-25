@@ -13,8 +13,8 @@
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
-        android:paddingRight="@dimen/abc_list_item_padding_horizontal_material">
+        android:paddingStart="@dimen/abc_list_item_padding_horizontal_material"
+        android:paddingEnd="@dimen/abc_list_item_padding_horizontal_material">
 
         <TextView
             android:id="@+id/widget_stock_list_item_symbol"
@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/abc_list_item_padding_horizontal_material"
-            android:layout_marginRight="@dimen/abc_list_item_padding_horizontal_material"
             android:gravity="start|center_vertical"
             tools:text="@string/widget_stock_list_symbol_text" />
 
@@ -47,8 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/WidgetStockListPercentChangeTextStyle"
-                android:paddingLeft="@dimen/price_change_background_horizontal_padding"
-                android:paddingRight="@dimen/price_change_background_horizontal_padding"
+                android:paddingStart="@dimen/price_change_background_horizontal_padding"
+                android:paddingEnd="@dimen/price_change_background_horizontal_padding"
                 tools:text="@string/widget_stock_list_change_text" />
 
         </LinearLayout>

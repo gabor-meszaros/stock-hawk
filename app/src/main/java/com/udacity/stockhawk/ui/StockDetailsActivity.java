@@ -2,6 +2,7 @@ package com.udacity.stockhawk.ui;
 
 import android.content.AsyncQueryHandler;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -131,7 +132,11 @@ public class StockDetailsActivity extends AppCompatActivity {
         final List<String> historyPointStrings = getHistoryPointStrings(cursor);
 
         // We need chronological order, but we store them in a reversed order in the DB.
-        Collections.reverse(historyPointStrings);
+        // If we have RTL layout direction, the reversed order is what we want!
+        final Configuration config = getResources().getConfiguration();
+        if (View.LAYOUT_DIRECTION_RTL != config.getLayoutDirection()) {
+            Collections.reverse(historyPointStrings);
+        }
 
         final List<Entry> yAxisIdPriceEntries = getYAxisIdPriceEntries(historyPointStrings);
         final LineData lineData = getLineData(yAxisIdPriceEntries);

@@ -6,8 +6,8 @@
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/activity_main_list_item_symbol"
@@ -45,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingLeft="@dimen/price_change_background_horizontal_padding"
-            android:paddingRight="@dimen/price_change_background_horizontal_padding"
+            android:paddingStart="@dimen/price_change_background_horizontal_padding"
+            android:paddingEnd="@dimen/price_change_background_horizontal_padding"
             tools:text="@string/activity_main_list_item_change_text" />
 
     </LinearLayout>
