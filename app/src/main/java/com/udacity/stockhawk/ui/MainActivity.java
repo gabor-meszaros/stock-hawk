@@ -187,8 +187,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (PrefUtils.getDisplayMode(this)
                 .equals(getString(R.string.pref_display_mode_absolute_key))) {
             item.setIcon(R.drawable.ic_percentage);
+            item.setTitle(getString(R.string.activity_main_menu_switch_percentage_description));
         } else {
             item.setIcon(R.drawable.ic_dollar);
+            item.setTitle(getString(R.string.activity_main_menu_switch_dollar_description));
         }
     }
 

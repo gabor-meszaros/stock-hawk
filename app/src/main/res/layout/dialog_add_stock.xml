@@ -20,6 +20,7 @@
         android:maxLength="4"
         android:maxLines="1"
         android:singleLine="true"
+        android:contentDescription="@string/activity_main_dialog_symbol_description"
         android:inputType="textCapCharacters|textVisiblePassword" />
 
 </LinearLayout>

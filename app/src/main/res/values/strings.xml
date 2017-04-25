@@ -26,6 +26,11 @@
     <!-- Activity Main -->
     <string name="activity_main_action_change_units">@string/pref_display_mode_key</string>
 
+    <string name="activity_main_menu_switch_dollar_description">Switch display unit to dollar</string>
+    <string name="activity_main_menu_switch_percentage_description">Switch display unit to percentage</string>
+
+    <string name="activity_main_refresh_description">Pull down for stock list refresh</string>
+
     <string name="activity_main_list_item_symbol_text">STCK</string>
     <string name="activity_main_list_item_price_text">$1234.56</string>
     <string name="activity_main_list_item_change_text">-$9.99</string>
@@ -35,6 +40,10 @@
     <string name="activity_main_dialog_hint">Symbol (e.g. GOOG)</string>
     <string name="activity_main_dialog_cancel">Cancel</string>
     <string name="activity_main_dialog_add">Add</string>
+
+    <string name="activity_main_dialog_symbol_description">Write a symbol here e.g. GOOG</string>
+
+    <string name="activity_main_fab_description">Add new stock to watch</string>
 
     <string name="activity_main_error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
     <string name="activity_main_error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
@@ -54,6 +63,8 @@
     <string name="activity_stock_details_history_date_label_format">yyyy-MM-dd</string>
     <string name="activity_stock_details_history_description"><xliff:g id="symbol" example="GOOG">%s</xliff:g>\@YahooFinance</string>
     <string name="activity_stock_details_history_no_data_error">"No data to display."</string>
+
+    <string name="activity_stock_details_history_content_description">History graph of price change</string>
 
     <!-- Widget Stock List -->
     <string name="widget_stock_list_symbol_text">STCK</string>
