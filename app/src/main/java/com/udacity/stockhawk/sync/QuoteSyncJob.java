@@ -65,7 +65,6 @@ public final class QuoteSyncJob {
             ArrayList<ContentValues> quoteCVs = new ArrayList<>();
 
             for (String symbol : stockArray) {
-
                 Stock stock = quotes.get(symbol);
 
                 ContentValues quoteCV = new ContentValues();
@@ -107,6 +106,8 @@ public final class QuoteSyncJob {
                             Contract.Quote.URI,
                             quoteCVs.toArray(new ContentValues[quoteCVs.size()]));
 
+            PrefUtils.saveLastStockUpdateDate(context);
+
         } catch (IOException exception) {
             Timber.e(exception, "Error fetching stock quotes");
         }
@@ -140,13 +141,10 @@ public final class QuoteSyncJob {
             Intent nowIntent = new Intent(context, QuoteIntentService.class);
             context.startService(nowIntent);
         } else {
-
             JobInfo.Builder builder = new JobInfo.Builder(ONE_OFF_ID, new ComponentName(context, QuoteJobService.class));
-
 
             builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                     .setBackoffCriteria(INITIAL_BACKOFF, JobInfo.BACKOFF_POLICY_EXPONENTIAL);
-
 
             JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
 

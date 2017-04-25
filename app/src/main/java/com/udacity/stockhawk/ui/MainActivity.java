@@ -128,7 +128,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             mErrorDisplayTextView.setVisibility(View.VISIBLE);
         } else if (!networkUp()) {
             mSwipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(this, R.string.activity_main_toast_no_connectivity, Toast.LENGTH_LONG).show();
+            if (PrefUtils.areStockValuesExpired(this)) {
+                Toast.makeText(this, R.string.error_stocks_are_out_of_date, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, R.string.activity_main_toast_no_connectivity, Toast.LENGTH_LONG).show();
+            }
         } else if (PrefUtils.getStocks(this).size() == 0) {
             mSwipeRefreshLayout.setRefreshing(false);
             mErrorDisplayTextView.setText(getString(R.string.activity_main_error_no_stocks));
@@ -170,8 +174,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mSwipeRefreshLayout.setRefreshing(false);
 
         if (data.getCount() != 0) {
+            if (PrefUtils.areStockValuesExpired(this)) {
+                Toast.makeText(this, R.string.error_stocks_are_out_of_date, Toast.LENGTH_LONG).show();
+            }
             mErrorDisplayTextView.setVisibility(View.GONE);
         }
+
         mAdapter.setCursor(data);
     }
 

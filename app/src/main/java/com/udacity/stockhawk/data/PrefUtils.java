@@ -3,6 +3,7 @@ package com.udacity.stockhawk.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 
 import com.udacity.stockhawk.R;
 
@@ -85,5 +86,24 @@ public final class PrefUtils {
         }
 
         editor.apply();
+    }
+
+    public static void saveLastStockUpdateDate(@NonNull final Context context) {
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences.Editor editor = prefs.edit();
+        final String lastUpdateDayKey = context.getString(R.string.pref_last_stock_update_date_key);
+        editor.putLong(lastUpdateDayKey, System.currentTimeMillis());
+        editor.apply();
+    }
+
+    public static boolean areStockValuesExpired(@NonNull final Context context) {
+        final String lastUpdateDayKey = context.getString(R.string.pref_last_stock_update_date_key);
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final long startOfTime = 0;
+        final long lastUpdate = prefs.getLong(lastUpdateDayKey, startOfTime);
+        final long currentTime = System.currentTimeMillis();
+        final long expirationIntervalInMilliseconds =
+                context.getResources().getInteger(R.integer.stock_expiration_interval_in_milliseconds);
+        return (currentTime - lastUpdate) > expirationIntervalInMilliseconds;
     }
 }

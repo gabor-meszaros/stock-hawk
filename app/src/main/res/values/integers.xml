@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 600000 milliseconds are 10 minutes -->
+    <integer name="stock_expiration_interval_in_milliseconds">600000</integer>
+</resources>

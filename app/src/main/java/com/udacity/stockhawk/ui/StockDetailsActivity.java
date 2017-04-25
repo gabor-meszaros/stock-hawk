@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -22,6 +23,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
+import com.udacity.stockhawk.data.PrefUtils;
 import com.udacity.stockhawk.util.UiUtils;
 
 import java.text.SimpleDateFormat;
@@ -82,6 +84,12 @@ public class StockDetailsActivity extends AppCompatActivity {
                                 setPrice(cursor);
                                 setPriceChange(cursor);
                                 setHistory(cursor);
+
+                                if (PrefUtils.areStockValuesExpired(StockDetailsActivity.this)) {
+                                    Toast.makeText(StockDetailsActivity.this,
+                                            R.string.error_stocks_are_out_of_date,
+                                            Toast.LENGTH_LONG).show();
+                                }
 
                                 showStockData();
                             } else {
