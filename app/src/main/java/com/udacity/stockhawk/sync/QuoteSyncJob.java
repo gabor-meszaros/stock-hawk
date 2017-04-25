@@ -34,6 +34,9 @@ public final class QuoteSyncJob {
     private static final int PERIODIC_ID = 1;
     private static final int YEARS_OF_HISTORY = 2;
 
+    private static final String HISTORY_POINT_SEPARATOR = "\n";
+    private static final String HISTORY_POINT_VALUE_SEPARATOR = ", ";
+
     private QuoteSyncJob() {
     }
 
@@ -82,9 +85,9 @@ public final class QuoteSyncJob {
 
                     for (HistoricalQuote it : history) {
                         historyBuilder.append(it.getDate().getTimeInMillis());
-                        historyBuilder.append(", ");
+                        historyBuilder.append(HISTORY_POINT_VALUE_SEPARATOR);
                         historyBuilder.append(it.getClose());
-                        historyBuilder.append("\n");
+                        historyBuilder.append(HISTORY_POINT_SEPARATOR);
                     }
 
                     quoteCV.put(Contract.Quote.COLUMN_SYMBOL, symbol);
