@@ -1,9 +1,11 @@
-<resources>
+<resources
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- General -->
     <string name="app_name">Stock Hawk</string>
 
     <string name="stock_symbol_allowed_characters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="stock_price_change_combined_format"><xliff:g id="absolute" example="+$1000.00">%s</xliff:g> (<xliff:g id="percentage" example="10.00$">%s</xliff:g>)</string>
 
     <!-- Preferences -->
     <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
@@ -48,6 +50,10 @@
     <string name="stock_details_change_text">-$1.54 (1.37%)</string>
 
     <string name="activity_stock_details_error_general">Sorry, something went wrong.\nPlease navigate back  and try again.</string>
+
+    <string name="activity_stock_details_history_date_label_format">yyyy-MM-dd</string>
+    <string name="activity_stock_details_history_description"><xliff:g id="symbol" example="GOOG">%s</xliff:g>\@YahooFinance</string>
+    <string name="activity_stock_details_history_no_data_error">"No data to display."</string>
 
     <!-- Widget Stock List -->
     <string name="widget_stock_list_symbol_text">STCK</string>

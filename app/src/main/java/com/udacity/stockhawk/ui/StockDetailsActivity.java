@@ -38,8 +38,6 @@ public class StockDetailsActivity extends AppCompatActivity {
 
     private static final String END_LINE_SEPARATOR = "\\r?\\n";
     private static final String HISTORY_POINT_VALUE_SEPARATOR = ", ";
-    private static final SimpleDateFormat X_AXIS_DATE_LABEL_FORMAT =
-            new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
     @BindView(R.id.activity_stock_details_current_stock_info)
     View mCurrentStockInfo;
@@ -190,7 +188,9 @@ public class StockDetailsActivity extends AppCompatActivity {
 
     private String getDateString(final long dateInMilliseconds) {
         final Date date = new Date(dateInMilliseconds);
-        return X_AXIS_DATE_LABEL_FORMAT.format(date);
+        final String dateFormatString =
+                getString(R.string.activity_stock_details_history_date_label_format);
+        return new SimpleDateFormat(dateFormatString, Locale.ENGLISH).format(date);
     }
 
     private LineData getLineData(@NonNull final List<Entry> dataEntries) {
@@ -227,7 +227,9 @@ public class StockDetailsActivity extends AppCompatActivity {
 
         // Show the source of the data
         final String symbol = mSymbol.getText().toString();
-        mHistory.getDescription().setText(symbol + "@YahooFinance");
+        final String description =
+                getString(R.string.activity_stock_details_history_description, symbol);
+        mHistory.getDescription().setText(description);
 
         // Borders
         mHistory.setDrawBorders(true);
@@ -246,7 +248,7 @@ public class StockDetailsActivity extends AppCompatActivity {
         axisRight.setTextColor(UiUtils.getColor(this, R.color.white));
 
         // Inform the user if there is no data in the history
-        mHistory.setNoDataText("No data to display.");
+        mHistory.setNoDataText(getString(R.string.activity_stock_details_history_no_data_error));
         mHistory.setNoDataTextColor(UiUtils.getColor(this, R.color.white));
     }
 
