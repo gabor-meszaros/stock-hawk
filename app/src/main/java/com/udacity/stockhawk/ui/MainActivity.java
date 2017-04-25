@@ -124,14 +124,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (!networkUp() && mAdapter.getItemCount() == 0) {
             mSwipeRefreshLayout.setRefreshing(false);
-            mErrorDisplayTextView.setText(getString(R.string.error_no_network));
+            mErrorDisplayTextView.setText(getString(R.string.activity_main_error_no_network));
             mErrorDisplayTextView.setVisibility(View.VISIBLE);
         } else if (!networkUp()) {
             mSwipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(this, R.string.toast_no_connectivity, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.activity_main_toast_no_connectivity, Toast.LENGTH_LONG).show();
         } else if (PrefUtils.getStocks(this).size() == 0) {
             mSwipeRefreshLayout.setRefreshing(false);
-            mErrorDisplayTextView.setText(getString(R.string.error_no_stocks));
+            mErrorDisplayTextView.setText(getString(R.string.activity_main_error_no_stocks));
             mErrorDisplayTextView.setVisibility(View.VISIBLE);
         } else {
             mErrorDisplayTextView.setVisibility(View.GONE);
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             if (networkUp()) {
                 mSwipeRefreshLayout.setRefreshing(true);
             } else {
-                String message = getString(R.string.toast_stock_added_no_connectivity, symbol);
+                String message = getString(R.string.activity_main_toast_stock_added_no_connectivity, symbol);
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             }
 

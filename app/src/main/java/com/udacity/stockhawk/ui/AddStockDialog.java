@@ -49,13 +49,13 @@ public class AddStockDialog extends DialogFragment {
 
         final AlertDialog dialog = new AlertDialog.Builder( getActivity() )
                 .setView(addStockDialogBody)
-                .setMessage(getString(R.string.dialog_title))
-                .setPositiveButton(getString(R.string.dialog_add), new DialogInterface.OnClickListener() {
+                .setMessage(getString(R.string.activity_main_dialog_title))
+                .setPositiveButton(getString(R.string.activity_main_dialog_add), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         addStock();
                     }
                 })
-                .setNegativeButton(getString(R.string.dialog_cancel), null)
+                .setNegativeButton(getString(R.string.activity_main_dialog_cancel), null)
                 .create();
 
         final Window dialogWindow = dialog.getWindow();

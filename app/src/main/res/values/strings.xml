@@ -18,36 +18,36 @@
     <string name="pref_display_mode_absolute_key">absolute</string>
     <string name="pref_display_mode_percentage_key">percentage</string>
 
-    <string name="default_stocks_yahoo">YHOO</string>
-    <string name="default_stocks_apple">AAPL</string>
-    <string name="default_stocks_microsoft">MSFT</string>
-    <string name="default_stocks_facebook">FB</string>
+    <string name="pref_default_stocks_yahoo">YHOO</string>
+    <string name="pref_default_stocks_apple">AAPL</string>
+    <string name="pref_default_stocks_microsoft">MSFT</string>
+    <string name="pref_default_stocks_facebook">FB</string>
 
     <!-- Activity Main -->
-    <string name="action_change_units">@string/pref_display_mode_key</string>
+    <string name="activity_main_action_change_units">@string/pref_display_mode_key</string>
 
     <string name="activity_main_list_item_symbol_text">STCK</string>
     <string name="activity_main_list_item_price_text">$1234.56</string>
     <string name="activity_main_list_item_change_text">-$9.99</string>
     <string name="activity_main_list_item_unknown_stock">Unknown</string>
 
-    <string name="dialog_title">Add Stock</string>
-    <string name="dialog_hint">Symbol (e.g. GOOG)</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_add">Add</string>
+    <string name="activity_main_dialog_title">Add Stock</string>
+    <string name="activity_main_dialog_hint">Symbol (e.g. GOOG)</string>
+    <string name="activity_main_dialog_cancel">Cancel</string>
+    <string name="activity_main_dialog_add">Add</string>
 
-    <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
-    <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
+    <string name="activity_main_error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
+    <string name="activity_main_error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
 
-    <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
-    <string name="toast_no_connectivity">Will refresh when network available.</string>
+    <string name="activity_main_toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
+    <string name="activity_main_toast_no_connectivity">Will refresh when network available.</string>
 
     <string name="activity_main_error_display_text">Something bad happened. Error message.</string>
 
     <!-- Activity Stock Details -->
-    <string name="stock_details_symbol_text">STCK</string>
-    <string name="stock_details_price_text">$1234.56</string>
-    <string name="stock_details_change_text">-$1.54 (1.37%)</string>
+    <string name="activity_stock_details_symbol_text">STCK</string>
+    <string name="activity_stock_details_price_text">$1234.56</string>
+    <string name="activity_stock_details_change_text">-$1.54 (1.37%)</string>
 
     <string name="activity_stock_details_error_general">Sorry, something went wrong.\nPlease navigate back  and try again.</string>
 

@@ -7,7 +7,7 @@
         android:id="@+id/action_change_units"
         android:icon="@drawable/ic_dollar"
         android:orderInCategory="99"
-        android:title="@string/action_change_units"
+        android:title="@string/activity_main_action_change_units"
         app:showAsAction="always" />
 
 </menu>
