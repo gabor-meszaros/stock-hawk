@@ -10,7 +10,7 @@
         android:id="@+id/widget_stock_list"
         android:layout_width="match_parent"
         android:layout_height="@dimen/abc_action_bar_default_height_material"
-        android:background="@color/colorPrimary">
+        android:background="@color/primary">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimary">
+        android:background="@color/primary">
 
         <ListView
             android:id="@+id/widget_stock_list_list"

@@ -196,7 +196,7 @@ public class StockDetailsActivity extends AppCompatActivity {
     private LineData getLineData(@NonNull final List<Entry> dataEntries) {
         final String descriptionIsNotNeeded = null;
         final LineDataSet dataSet = new LineDataSet(dataEntries, descriptionIsNotNeeded);
-        dataSet.setColor(UiUtils.getColor(this, R.color.colorPrimary));
+        dataSet.setColor(UiUtils.getColor(this, R.color.primary));
         return new LineData(dataSet);
     }
 
