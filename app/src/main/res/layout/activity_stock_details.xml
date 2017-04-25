@@ -79,7 +79,6 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textAppearance="@android:style/TextAppearance.Medium"
-        android:text="Something went wrong. Please try again."
-        tools:text="Something went wrong. Please try again." />
+        android:text="@string/activity_stock_details_error_general" />
 
 </RelativeLayout>
