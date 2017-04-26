@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -19,7 +20,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.udacity.stockhawk.R;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @SuppressWarnings("WeakerAccess")
     @BindView(R.id.activity_main_layout)
-    LinearLayout mActivityMainLayout;
+    RelativeLayout mActivityMainLayout;
 
     @SuppressWarnings("WeakerAccess")
     @BindView(R.id.activity_main_stocks)
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         }).attachToRecyclerView(mStockRecyclerView);
 
-
+        showBlankScreen();
     }
 
     private boolean networkUp() {
@@ -126,8 +127,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (!networkUp() && mAdapter.getItemCount() == 0) {
             mSwipeRefreshLayout.setRefreshing(false);
-            mErrorDisplayTextView.setText(getString(R.string.activity_main_error_no_network));
-            mErrorDisplayTextView.setVisibility(View.VISIBLE);
+            showErrorDisplay(R.string.activity_main_error_no_network);
         } else if (!networkUp()) {
             mSwipeRefreshLayout.setRefreshing(false);
             if (PrefUtils.areStockValuesExpired(this)) {
@@ -137,10 +137,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         } else if (PrefUtils.getStocks(this).size() == 0) {
             mSwipeRefreshLayout.setRefreshing(false);
-            mErrorDisplayTextView.setText(getString(R.string.activity_main_error_no_stocks));
-            mErrorDisplayTextView.setVisibility(View.VISIBLE);
+            showErrorDisplay(R.string.activity_main_error_no_stocks);
         } else {
-            mErrorDisplayTextView.setVisibility(View.GONE);
+            showStockList();
         }
     }
 
@@ -179,12 +178,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             if (PrefUtils.areStockValuesExpired(this)) {
                 Snackbar.make(mActivityMainLayout, R.string.error_stocks_are_out_of_date, Snackbar.LENGTH_LONG).show();
             }
-            mErrorDisplayTextView.setVisibility(View.GONE);
+            showStockList();
         }
 
         mAdapter.setCursor(data);
     }
-
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
@@ -223,5 +221,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showStockList() {
+        mErrorDisplayTextView.setVisibility(View.GONE);
+        mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void showErrorDisplay(int stringResourceId) {
+        mSwipeRefreshLayout.setVisibility(View.GONE);
+        mErrorDisplayTextView.setVisibility(View.VISIBLE);
+        mErrorDisplayTextView.setText(getString(stringResourceId));
+    }
+
+    private void showBlankScreen() {
+        mSwipeRefreshLayout.setVisibility(View.GONE);
+        mErrorDisplayTextView.setVisibility(View.GONE);
     }
 }

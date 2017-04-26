@@ -54,8 +54,8 @@
 
     <string name="activity_main_fab_description" translatable="true">Add new stock to watch</string>
 
-    <string name="activity_main_error_no_network" translatable="true">No network connectivity! Will load stock cursor when the network is available.</string>
-    <string name="activity_main_error_no_stocks" translatable="true">No stocks added! Hit the floating action button to add one.</string>
+    <string name="activity_main_error_no_network" translatable="true">No network connectivity!\nWill load stock cursor when the network is available.</string>
+    <string name="activity_main_error_no_stocks" translatable="true">No stocks added!\nHit the floating action button to add one.</string>
 
     <string name="activity_main_toast_stock_added_no_connectivity" translatable="true">Symbol %s added. Will refresh when network available.</string>
     <string name="activity_main_toast_no_connectivity" translatable="true">Will refresh when network available.</string>
