@@ -73,10 +73,9 @@ public final class PrefUtils {
         String absoluteKey = context.getString(R.string.pref_display_mode_absolute_key);
         String percentageKey = context.getString(R.string.pref_display_mode_percentage_key);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
         String displayMode = getDisplayMode(context);
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
 
         if (displayMode.equals(absoluteKey)) {
