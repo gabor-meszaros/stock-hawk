@@ -6,12 +6,13 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -40,6 +41,9 @@ import butterknife.ButterKnife;
 public class StockDetailsActivity extends AppCompatActivity {
 
     private static final String END_LINE_SEPARATOR = "\\r?\\n";
+
+    @BindView(R.id.activity_stock_details_layout)
+    RelativeLayout mActivityStockDetailsLayout;
 
     @BindView(R.id.activity_stock_details_current_stock_info)
     View mCurrentStockInfo;
@@ -85,9 +89,9 @@ public class StockDetailsActivity extends AppCompatActivity {
                                 setHistory(cursor);
 
                                 if (PrefUtils.areStockValuesExpired(StockDetailsActivity.this)) {
-                                    Toast.makeText(StockDetailsActivity.this,
+                                    Snackbar.make(mActivityStockDetailsLayout,
                                             R.string.error_stocks_are_out_of_date,
-                                            Toast.LENGTH_LONG).show();
+                                            Snackbar.LENGTH_LONG).show();
                                 }
 
                                 showStockData();
