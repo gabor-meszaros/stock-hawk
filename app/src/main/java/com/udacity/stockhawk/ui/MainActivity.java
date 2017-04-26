@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mStockRecyclerView.setAdapter(mAdapter);
         mStockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        showBlankScreen();
+
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setRefreshing(true);
         onRefresh();
@@ -109,8 +111,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                         null, null);
             }
         }).attachToRecyclerView(mStockRecyclerView);
-
-        showBlankScreen();
     }
 
     private boolean networkUp() {
