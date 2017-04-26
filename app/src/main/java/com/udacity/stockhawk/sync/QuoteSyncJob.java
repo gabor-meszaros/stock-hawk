@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import timber.log.Timber;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
@@ -41,26 +40,19 @@ public final class QuoteSyncJob {
     }
 
     static void getQuotes(Context context) {
-        Timber.d("Running sync job");
-
         Calendar from = Calendar.getInstance();
         Calendar to = Calendar.getInstance();
         from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
 
         try {
-
             Set<String> stockPref = PrefUtils.getStocks(context);
             String[] stockArray = stockPref.toArray(new String[stockPref.size()]);
-
-            Timber.d(stockPref.toString());
 
             if (stockArray.length == 0) {
                 return;
             }
 
             Map<String, Stock> quotes = YahooFinance.get(stockArray);
-
-            Timber.d(quotes.toString());
 
             ArrayList<ContentValues> quoteCVs = new ArrayList<>();
 
@@ -109,13 +101,11 @@ public final class QuoteSyncJob {
             PrefUtils.saveLastStockUpdateDate(context);
 
         } catch (IOException exception) {
-            Timber.e(exception, "Error fetching stock quotes");
+            exception.printStackTrace();
         }
     }
 
     private static void schedulePeriodic(Context context) {
-        Timber.d("Scheduling a periodic task");
-
         JobInfo.Builder builder = new JobInfo.Builder(PERIODIC_ID, new ComponentName(context, QuoteJobService.class));
 
         builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)

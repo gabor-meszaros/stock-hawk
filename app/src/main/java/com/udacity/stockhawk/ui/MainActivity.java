@@ -30,7 +30,6 @@ import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         SwipeRefreshLayout.OnRefreshListener,
@@ -54,8 +53,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onClick(String symbol) {
-        Timber.d("Symbol clicked: %s", symbol);
-
         final Intent showStockDetailsIntent = new Intent(this, StockDetailsActivity.class);
         showStockDetailsIntent.setData(Contract.Quote.makeUriForStock(symbol));
         startActivity(showStockDetailsIntent);
