@@ -40,7 +40,6 @@ import butterknife.ButterKnife;
 public class StockDetailsActivity extends AppCompatActivity {
 
     private static final String END_LINE_SEPARATOR = "\\r?\\n";
-    private static final String HISTORY_POINT_VALUE_SEPARATOR = ", ";
 
     @BindView(R.id.activity_stock_details_current_stock_info)
     View mCurrentStockInfo;
@@ -181,7 +180,8 @@ public class StockDetailsActivity extends AppCompatActivity {
     }
 
     private String[] getPriceDatePair(@NonNull final String historyPointString) {
-        return historyPointString.split(HISTORY_POINT_VALUE_SEPARATOR);
+        final String valueSeparator = getString(R.string.stock_history_point_value_separator);
+        return historyPointString.split(valueSeparator);
     }
 
     private List<String> getXAxisDateValues(@NonNull final List<String> historyPointStrings) {

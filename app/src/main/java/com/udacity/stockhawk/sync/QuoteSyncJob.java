@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 
@@ -34,7 +35,6 @@ public final class QuoteSyncJob {
     private static final int YEARS_OF_HISTORY = 2;
 
     private static final String HISTORY_POINT_SEPARATOR = "\n";
-    private static final String HISTORY_POINT_VALUE_SEPARATOR = ", ";
 
     private QuoteSyncJob() {
     }
@@ -74,9 +74,11 @@ public final class QuoteSyncJob {
 
                     StringBuilder historyBuilder = new StringBuilder();
 
+                    final String valueSeparator =
+                            context.getString(R.string.stock_history_point_value_separator);
                     for (HistoricalQuote it : history) {
                         historyBuilder.append(it.getDate().getTimeInMillis());
-                        historyBuilder.append(HISTORY_POINT_VALUE_SEPARATOR);
+                        historyBuilder.append(valueSeparator);
                         historyBuilder.append(it.getClose());
                         historyBuilder.append(HISTORY_POINT_SEPARATOR);
                     }

@@ -6,6 +6,7 @@
 
     <string name="stock_symbol_allowed_characters" translatable="false">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="stock_price_change_combined_format" translatable="true"><xliff:g id="absolute" example="+$1000.00">%s</xliff:g> (<xliff:g id="percentage" example="10.00$">%s</xliff:g>)</string>
+    <string name="stock_history_point_value_separator" translatable="false">, </string>
 
     <string name="error_stocks_are_out_of_date" translatable="true">Warning: Stocks prices are more than 10 minutes old! They will be automatically updated when the device is online.</string>
 
