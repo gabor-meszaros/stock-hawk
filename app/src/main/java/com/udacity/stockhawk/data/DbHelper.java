@@ -31,6 +31,7 @@ class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // It is safe now as we only have one database version
         db.execSQL(" DROP TABLE IF EXISTS " + Quote.TABLE_NAME);
         onCreate(db);
     }
