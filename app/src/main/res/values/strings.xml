@@ -6,10 +6,7 @@
 
     <string name="stock_symbol_allowed_characters" translatable="false">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
-    <!-- The reason why it is translatable is the order of the values in RTL layout direction, -->
-    <!-- e.g. +$1000 (10%) on LTR direction, but (10%) +$1000 on RTL directions. The value in  -->
-    <!-- the parenthesis is a secondary information and it should follow the primary information. -->
-    <string name="stock_price_change_combined_format" translatable="true"><xliff:g id="absolute" example="+$1000.00">%s</xliff:g> (<xliff:g id="percentage" example="10.00%">%s</xliff:g>)</string>
+    <string name="stock_price_change_combined_format" translatable="false"><xliff:g id="absolute" example="+$1000.00">%s</xliff:g> (<xliff:g id="percentage" example="10.00%">%s</xliff:g>)</string>
     <string name="stock_history_point_value_separator" translatable="false">, </string>
 
     <string name="error_stocks_are_out_of_date" translatable="true">Warning: Stocks prices are more than 10 minutes old! They will be automatically updated when the device is online.</string>

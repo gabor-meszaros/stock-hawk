@@ -48,6 +48,7 @@
                 style="@style/WidgetStockListPercentChangeTextStyle"
                 android:paddingStart="@dimen/price_change_background_horizontal_padding"
                 android:paddingEnd="@dimen/price_change_background_horizontal_padding"
+                android:textDirection="ltr"
                 tools:text="@string/widget_stock_list_change_text" />
 
         </LinearLayout>

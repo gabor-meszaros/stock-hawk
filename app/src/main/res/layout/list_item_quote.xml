@@ -47,6 +47,7 @@
             android:background="@drawable/percent_change_pill_green"
             android:paddingStart="@dimen/price_change_background_horizontal_padding"
             android:paddingEnd="@dimen/price_change_background_horizontal_padding"
+            android:textDirection="ltr"
             tools:text="@string/activity_main_list_item_change_text" />
 
     </LinearLayout>
