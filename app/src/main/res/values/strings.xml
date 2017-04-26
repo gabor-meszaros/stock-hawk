@@ -5,7 +5,11 @@
     <string name="app_name" translatable="false">Stock Hawk</string>
 
     <string name="stock_symbol_allowed_characters" translatable="false">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
-    <string name="stock_price_change_combined_format" translatable="true"><xliff:g id="absolute" example="+$1000.00">%s</xliff:g> (<xliff:g id="percentage" example="10.00$">%s</xliff:g>)</string>
+
+    <!-- The reason why it is translatable is the order of the values in RTL layout direction, -->
+    <!-- e.g. +$1000 (10%) on LTR direction, but (10%) +$1000 on RTL directions. The value in  -->
+    <!-- the parenthesis is a secondary information and it should follow the primary information. -->
+    <string name="stock_price_change_combined_format" translatable="true"><xliff:g id="absolute" example="+$1000.00">%s</xliff:g> (<xliff:g id="percentage" example="10.00%">%s</xliff:g>)</string>
     <string name="stock_history_point_value_separator" translatable="false">, </string>
 
     <string name="error_stocks_are_out_of_date" translatable="true">Warning: Stocks prices are more than 10 minutes old! They will be automatically updated when the device is online.</string>
@@ -37,8 +41,8 @@
     <string name="activity_main_refresh_description" translatable="true">Pull down for stock list refresh</string>
 
     <string name="activity_main_list_item_symbol_text" translatable="false">STCK</string>
-    <string name="activity_main_list_item_price_text" translatable="true">$1234.56</string>
-    <string name="activity_main_list_item_change_text" translatable="true">-$9.99</string>
+    <string name="activity_main_list_item_price_text" translatable="false">$1234.56</string>
+    <string name="activity_main_list_item_change_text" translatable="false">-$9.99</string>
     <string name="activity_main_list_item_unknown_stock" translatable="true">Unknown</string>
 
     <string name="activity_main_dialog_title" translatable="true">Add Stock</string>
@@ -60,21 +64,21 @@
 
     <!-- Activity Stock Details -->
     <string name="activity_stock_details_symbol_text" translatable="false">STCK</string>
-    <string name="activity_stock_details_price_text" translatable="true">$1234.56</string>
-    <string name="activity_stock_details_change_text" translatable="true">-$1.54 (1.37%)</string>
+    <string name="activity_stock_details_price_text" translatable="false">$1234.56</string>
+    <string name="activity_stock_details_change_text" translatable="false">-$1.54 (1.37%)</string>
 
     <string name="activity_stock_details_error_general" translatable="true">Sorry, something went wrong.\nPlease navigate back  and try again.</string>
 
-    <string name="activity_stock_details_history_date_label_format" translatable="true">yyyy-MM-dd</string>
-    <string name="activity_stock_details_history_description" translatable="true"><xliff:g id="symbol" example="GOOG">%s</xliff:g>\@YahooFinance</string>
-    <string name="activity_stock_details_history_no_data_error" translatable="true">"No data to display."</string>
+    <string name="activity_stock_details_history_date_label_format" translatable="false">yyyy-MM-dd</string>
+    <string name="activity_stock_details_history_description" translatable="false"><xliff:g id="symbol" example="GOOG">%s</xliff:g>\@YahooFinance</string>
+    <string name="activity_stock_details_history_no_data_error" translatable="true">No data to display.</string>
 
     <string name="activity_stock_details_history_content_description" translatable="true">History graph of price change</string>
 
     <!-- Widget Stock List -->
     <string name="widget_stock_list_symbol_text" translatable="false">STCK</string>
-    <string name="widget_stock_list_price_text" translatable="true">$1234.56</string>
-    <string name="widget_stock_list_change_text" translatable="true">-$1.54 (1.37%)</string>
+    <string name="widget_stock_list_price_text" translatable="false">$1234.56</string>
+    <string name="widget_stock_list_change_text" translatable="false">-$1.54 (1.37%)</string>
 
     <string name="widget_stock_list_error_no_stocks" translatable="true">No stocks to show!\nClick here to fix it.</string>
 
